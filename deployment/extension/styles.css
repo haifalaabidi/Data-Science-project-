@@ -1,0 +1,17 @@
+#react-chrome-app {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #gauge {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 4rem; /* assuming the default font size is 16px */
+  }
+
+
+  

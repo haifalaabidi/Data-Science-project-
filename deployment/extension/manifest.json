@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "PhishMate",
+    "version": "1.0",
+    "description": "Extracts the subject from an email in Gmail and logs it in the console",
+    "permissions": [
+      "activeTab",
+      "storage"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["https://mail.google.com/*"],
+        "js": ["contentScript.js"],
+        "css": ["styles.css"]
+      }
+    ]
+  }

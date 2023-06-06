@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}URL Detection {% endblock %}
+
+{% block content %}
+  <meta charset="UTF-8">
+  <title>Spam Detection System</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<br><br><br><br><br>
+
+
+	<h2>Phishing⚠️ Detector for URL </h2>
+
+
+    <form action="{{ url_for('urlpredict')}}" method="POST">
+		 <label for="message">Enter URL:</label>
+    	<textarea  name="message" rows="6" cols="50" required="required"></textarea>
+		<br> </br>
+         <button type="submit" class="btn btn-primary btn-block">Predict</button>
+
+        	<div class="results">
+<br><br><br><br><br>
+
+    {% if prediction == 0 %}
+      <div class="alert alert-danger mt-3">
+        <h4 class="alert-heading">Phishing Attack Detected!</h4>
+        <p>Be cautious, this URL appears to be a phishing attack.</p>
+      </div>
+    {% elif prediction == 1 %}
+      <div class="alert alert-success mt-3">
+        <h4 class="alert-heading">Safe URL</h4>
+        <p>This URL is safe.</p>
+      </div>
+    {% endif %}
+</div>
+
+    </form>
+
+<br><br>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}News {% endblock %}
+
+{% block content %}
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <br>
+    <div class="row">
+
+                {% for article in articles %}
+                    <div class="col s12 m6 l4">
+{#                    <div class="card rounded shadow-lg m-2" style="width: 25rem; height: 560px; overflow: hidden;">#}
+                        <div class="card rounded shadow-lg m-2" style="height: 560px; width: 21rem; overflow: hidden;">
+                            <a href="{{ article.url }}" target="_blank">
+                                <img src="{{ article.urlToImage }}" class="card-img-top"  alt="Card image cap" style="height: 230px;">
+                            </a>
+
+                            <div class="card-body">
+                                <p class="card-title"> {{ article.author }}</p>
+                                <h5 class="card-title"> {{ article.title }}</h5>
+                                <p class="card-title"> {{ article.name}}</p>
+                                <hr>
+                                <small>date:{{ article.publishedAt }}</small>
+                                <a href="{{ article.url }}" target="_blank" class="btn btn-success m-1">See News</a>
+                                <div class="text-center">{{ article.rep }}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+{% endblock %}

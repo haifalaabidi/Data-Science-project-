@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Email Detection {% endblock %}
+
+{% block content %}
+  <meta charset="UTF-8">
+  <title>Spam Detection System</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+<br><br><br><br><br>
+
+
+
+	<h2>Phishing⚠️ Detector for 📧 Subject </h2>
+
+
+    <form action="{{ url_for('subjectpredict')}}" method="POST">
+		<label for="message">Enter Email Subject:</label><br>
+    	<textarea  name="message" rows="6" cols="50" required="required"></textarea>
+		<br> </br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+        	<div class="results">
+
+	 {% if prediction == 1 %}
+        <div class="alert alert-danger mt-3 animated shake">
+          <h4 class="alert-heading">Phishing Attack Detected!</h4>
+          <p>Be cautious, this email subject appears to be a phishing attack.</p>
+        </div>
+      {% elif prediction == 0 %}
+        <div class="alert alert-success mt-3 animated bounceIn">
+          <h4 class="alert-heading">Safe Email Subject</h4>
+          <p>This email subject is safe.</p>
+        </div>
+      {% endif %}
+    </form>
+
+<br><br>
+
+{% endblock %}
